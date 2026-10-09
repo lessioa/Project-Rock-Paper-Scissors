@@ -1,6 +1,10 @@
 let humanScore = 0;
 let computerScore = 0;
 
+
+
+
+
 function getComputerChoice(num) {   
     let randomNumber = Math.floor(Math.random() * num);
     if (randomNumber == 0) {
@@ -68,7 +72,7 @@ function playRound(humanChoice, computerChoice) {
 }
 
 function playGame() {
-    const humanSelection1 = getHumanChoice();
+    /*  const humanSelection1 = getHumanChoice();
     const computerSelection1 = getComputerChoice(3);
     const game1 = playRound(humanSelection1, computerSelection1);
 
@@ -87,20 +91,59 @@ function playGame() {
     const humanSelection5 = getHumanChoice();
     const computerSelection5 = getComputerChoice(3);
     const game5 = playRound(humanSelection5, computerSelection5);
+    */
+    const body = document.querySelector("body");
 
-    if (humanScore == computerScore) {
-        console.log(`Playerscore: ${humanScore} --- Computer score: ${computerScore}. It's a tie!`);
-    }
+    const humanSelection = document.createElement("button");  
+    humanSelection.innerText = "humanSelection";
+    const computerSelection = document.createElement("button"); 
+    computerSelection.innerText = "ComputerSelection";  
+    const playRound2 = document.createElement("button");
+    playRound2.innerText = "Play Round";
+    body.appendChild(humanSelection);
+    body.appendChild(computerSelection);  
+    body.appendChild(playRound2); 
 
-    if (humanScore > computerScore){  
-        console.log(`Playerscore: ${humanScore} --- Computer score: ${computerScore}. You win!`);
-    }
+    const dialog = document.createElement("div");
+    body.appendChild(dialog);
 
-    if (computerScore > humanScore) {
-        console.log(`Playerscore: ${humanScore} --- Computer score: ${computerScore}. Computer wins!`);
-    }
+
+    humanSelection.addEventListener("click", function (e) {
+        
+        
+    });
+
+    computerSelection.addEventListener("click", function (e) {
+        
+    });
+
+    playRound2.addEventListener("click", function (e) {
+        const humanSelection1 = getHumanChoice();
+        const computerSelection1 = getComputerChoice(3);
+        const game1 = playRound(humanSelection1, computerSelection1);
+        if (humanScore == computerScore) {
+        dialog.innerText = (`Playerscore: ${humanScore} --- Computer score: ${computerScore}. It's a tie!`);
+        }
+
+        if (humanScore > computerScore){  
+        dialog.innerText = (`Playerscore: ${humanScore} --- Computer score: ${computerScore}. You win!`);
+        }
+
+        if (computerScore > humanScore) {
+        dialog.innerText = (`Playerscore: ${humanScore} --- Computer score: ${computerScore}. Computer wins!`);
+        }
+        if (humanScore == 5) {
+            dialog.innerText = "Game ends. human wins.";
+        }
+
+        else if (computerScore == 5) {
+            dialog.innerText = "Game ends. computer wins."
+        }
+    });
+
+
 }
 
 
-playGame();
 
+playGame();
